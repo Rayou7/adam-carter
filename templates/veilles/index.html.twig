@@ -1,0 +1,227 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veille Technologique{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        {# En-tête #}
+        <header class="mb-16">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
+                    Veille Technologique
+                </h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Découvrez comment je reste à jour avec les dernières tendances et innovations du secteur informatique.
+                </p>
+            </div>
+
+            {# Section Qu'est-ce que la veille technologique #}
+            <section class="mb-12 bg-white p-8 rounded-xl shadow-md">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-search text-blue-600 text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-800">
+                        Qu'est-ce que la veille technologique ?
+                    </h2>
+                </div>
+                <p class="mb-6 text-gray-600 leading-relaxed">
+                    La veille technologique est un processus continu de surveillance et d'analyse des évolutions technologiques
+                    dans un domaine spécifique. Elle permet aux entreprises et aux professionnels de rester informés des
+                    dernières innovations, tendances et bonnes pratiques, facilitant ainsi la prise de décisions stratégiques et
+                    l'adaptation aux changements du marché.
+                </p>
+
+                <h3 class="text-xl font-medium text-gray-700 mb-4">
+                    Pourquoi est-ce important ?
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    {% for item in [
+                        {
+                            'title': 'Anticiper les évolutions',
+                            'description': 'Prévoir les changements technologiques pour s\'y adapter rapidement',
+                            'icon': 'globe'
+                        },
+                        {
+                            'title': 'Identifier des opportunités',
+                            'description': 'Découvrir de nouvelles technologies pour innover',
+                            'icon': 'book-open'
+                        },
+                        {
+                            'title': 'Rester compétitif',
+                            'description': 'Maintenir un avantage concurrentiel dans un environnement en évolution',
+                            'icon': 'rss'
+                        },
+                        {
+                            'title': 'Optimiser les processus',
+                            'description': 'Améliorer les pratiques existantes grâce aux nouvelles technologies',
+                            'icon': 'newspaper'
+                        }
+                    ] %}
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-start">
+                            <div class="mr-3 mt-1">
+                                <i class="fas fa-{{ item.icon }} text-blue-600 "></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">{{ item.title }}</h4>
+                                <p class="text-sm text-gray-600">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </header>
+
+        {# Sujets de Veille #}
+        <main>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8">Sujets de Veille</h2>
+
+            {# Docker #}
+            <section class="bg-white p-8 rounded-xl shadow-md mb-10 border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-database text-blue-600 text-xl"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold text-blue-700">Docker - Conteneurisation</h3>
+                </div>
+                <p class="mb-6 text-gray-600 leading-relaxed">
+                    Docker est une plateforme de conteneurisation qui révolutionne le déploiement et la gestion des
+                    applications. Cette technologie permet d'encapsuler une application et ses dépendances dans un conteneur
+                    léger et portable, garantissant ainsi une exécution cohérente dans différents environnements.
+                </p>
+
+                <div class="mb-6 bg-blue-50 p-5 rounded-lg">
+                    <h4 class="font-medium text-gray-800 mb-3">Avantages clés :</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>
+                            <strong>Meilleure utilisation des ressources</strong> - Les conteneurs partagent le même système
+                            d'exploitation, ce qui les rend plus légers que les machines virtuelles.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>
+                            <strong>Scalabilité accrue</strong> - Facilité à déployer et à mettre à l'échelle des applications en
+                            fonction des besoins.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>
+                            <strong>Simplification des processus</strong> - Standardisation du développement et du déploiement des
+                            applications.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>
+                            <strong>Facilitation DevOps</strong> - Amélioration de la collaboration entre les équipes de
+                            développement et d'exploitation.
+                        </span>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </section>
+
+            {# Cybersécurité IA #}
+            <section class="bg-white p-8 rounded-xl shadow-md mb-10 border-l-4 border-indigo-500 hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-indigo-700">Cybersécurité dans l'IA</h3>
+                </div>
+                <p class="mb-6 text-gray-600 leading-relaxed">
+                    Avec l'essor de l'intelligence artificielle (IA), la cybersécurité dans ce domaine devient un enjeu crucial.
+                    Les systèmes d'IA, tout en offrant des opportunités innovantes, présentent également de nouveaux risques en
+                    matière de sécurité qui nécessitent des approches spécifiques.
+                </p>
+
+                <div class="mb-6 bg-indigo-50 p-5 rounded-lg">
+                    <h4 class="font-medium text-gray-800 mb-3">Enjeux principaux :</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">•</span>
+                            <span>
+                            <strong>Protection des données d'entraînement</strong> - Sécurisation des données sensibles utilisées
+                            pour entraîner les modèles d'IA.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">•</span>
+                            <span>
+                            <strong>Prévention des attaques adverses</strong> - Protection contre les tentatives de manipulation
+                            des modèles d'IA.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">•</span>
+                            <span>
+                            <strong>Confidentialité des informations</strong> - Garantie que les systèmes d'IA respectent la vie
+                            privée des utilisateurs.
+                        </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">•</span>
+                            <span>
+                            <strong>Questions éthiques</strong> - Considérations sur l'autonomie et la prise de décision des
+                            systèmes d'IA.
+                        </span>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </section>
+        </main>
+
+        {# Sources #}
+        <footer class="mt-16">
+            <div class="border-t border-gray-200 pt-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Mes sources de veille</h2>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-10">
+                    {% for source in [
+                        {
+                            'name': 'Google Actualités',
+                            'description': 'Agrégateur d\'actualités personnalisé pour suivre les dernières nouvelles technologiques',
+                            'icon': 'newspaper'
+                        },
+                        {
+                            'name': 'Feedly',
+                            'description': 'Agrégateur de flux RSS personnalisé pour centraliser les sources d\'information',
+                            'icon': 'rss'
+                        },
+                        {
+                            'name': 'GitHub Trending',
+                            'description': 'Suivi des projets populaires et des nouvelles technologies émergentes',
+                            'icon': 'globe'
+                        },
+                        {
+                            'name': 'Newsletters spécialisées',
+                            'description': 'Abonnement à des newsletters sur la cybersécurité et les technologies cloud',
+                            'icon': 'book-open'
+                        }
+                    ] %}
+                        <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-400">
+                            <div class="flex items-center mb-3">
+                                <div class="mr-3">
+                                    <i class="fas fa-{{ source.icon }} text-blue-600"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-800">{{ source.name }}</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">{{ source.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </footer>
+    </div>
+{% endblock %}

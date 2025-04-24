@@ -1,0 +1,251 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        {# En-tête #}
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-6">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                Mes Réalisations
+            </span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Découvrez mes projets concrets développés en contexte professionnel et académique
+            </p>
+        </div>
+
+        {# Filtres avec boutons colorés #}
+        <div class="flex justify-center gap-3 mb-12 flex-wrap">
+            <button class="filter-btn px-4 py-2 rounded-full border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300" data-filter="all">
+                <i class="fas fa-layer-group mr-2"></i>
+                Tous projets
+            </button>
+
+            <button class="filter-btn px-4 py-2 rounded-full border-2 border-blue-500 text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300" data-filter="pro">
+                <i class="fas fa-briefcase mr-2"></i>
+                Professionnels
+            </button>
+
+            <button class="filter-btn px-4 py-2 rounded-full border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition-all duration-300" data-filter="school">
+                <i class="fas fa-graduation-cap mr-2"></i>
+                Scolaires
+            </button>
+        </div>
+
+
+        {# Grille de projets #}
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
+            {# Stage Mai 2024 #}
+            <div class="project-card" data-category="pro">
+                <div class="h-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-shadow">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-lg bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-briefcase text-2xl text-blue-600"></i>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">STAGE</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Site Vitrine - Aide à Domicile</h3>
+                        <div class="flex items-center text-gray-500 mb-5">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Mai 2024 - 6 semaines</span>
+                        </div>
+
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Conception et développement d'un site vitrine responsive pour une entreprise d'aide à domicile.
+                            Intégration des services, formulaire de contact et système de prise de rendez-vous en ligne.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {# Stage Avril 2025 #}
+            <div class="project-card" data-category="pro">
+                <div class="h-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-shadow">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-lg bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-shopping-bag text-2xl text-indigo-600"></i>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-semibold">STAGE</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Boutique en ligne - Marque de vêtements</h3>
+                        <div class="flex items-center text-gray-500 mb-5">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Avril 2025 - 8 semaines</span>
+                        </div>
+
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Développement d'une boutique e-commerce complète avec catalogue produits, panier, système de paiement
+                            et espace client. Optimisation des performances et référencement.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="tech-tag">Symfony</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            {# Projet Scolaire 1 #}
+            <div class="project-card" data-category="school">
+                <div class="h-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-shadow">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-lg bg-green-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar-check text-2xl text-green-600"></i>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">SCOLAIRE</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Système de Réservation de Salles</h3>
+                        <div class="flex items-center text-gray-500 mb-5">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Novembre 2023 - 3 mois</span>
+                        </div>
+
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Application web et mobile permettant la réservation des salles dans un établissement scolaire.
+                            Fonctionnalités : calendrier interactif, gestion des conflits, notifications, export PDF.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">FullStack</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            {# Projet Scolaire 2 #}
+            <div class="project-card" data-category="school">
+                <div class="h-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-shadow">
+                    <div class="p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-lg bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-rocket text-2xl text-purple-600"></i>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">SCOLAIRE</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Création d'Entreprise (Projet Global)</h3>
+                        <div class="flex items-center text-gray-500 mb-5">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Février 2024 - 2 mois</span>
+                        </div>
+
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Simulation complète de création d'entreprise incluant :
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+                            <li>Landing page moderne (HTML/CSS/JS)</li>
+                            <li>Identité visuelle et présence LinkedIn</li>
+                            <li>Documents légaux (KBIS fictif, devis, factures)</li>
+                            <li>Business plan et étude de marché</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Design</span>
+                            <span class="tech-tag">Gestion</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .filter-container {
+            @apply flex justify-center;
+        }
+
+        .filter-btn {
+            @apply relative px-5 py-2 text-sm font-medium;
+            @apply transition-all duration-200 ease-out;
+            @apply border-none bg-transparent;
+            @apply focus:outline-none;
+        }
+
+        .filter-btn-content {
+            @apply flex items-center;
+        }
+
+        .filter-btn::before {
+            content: '';
+            @apply absolute inset-0 bg-white rounded-md;
+            @apply transform scale-95 opacity-0;
+            @apply transition-all duration-200 ease-out;
+            @apply shadow-sm;
+            z-index: -1;
+        }
+
+        .filter-btn.active::before {
+            @apply scale-100 opacity-100;
+            @apply bg-gradient-to-r from-blue-50 to-indigo-50;
+            @apply border border-blue-100;
+        }
+
+        .filter-btn:not(.active):hover::before {
+            @apply scale-100 opacity-100 bg-gray-50;
+        }
+
+        .filter-btn.active {
+            @apply text-blue-600 font-semibold;
+        }
+
+        .filter-btn:not(.active) {
+            @apply text-gray-500 hover:text-gray-700;
+        }
+    </style>
+
+    <script>
+        // Filtrage des projets
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Retire la classe active de tous les boutons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-blue-600', 'bg-blue-500', 'bg-green-500', 'text-white');
+                });
+
+                // Ajoute les classes actives spécifiques
+                this.classList.add('active', 'text-white');
+
+                const filter = this.dataset.filter;
+                if (filter === 'all') this.classList.add('bg-blue-600');
+                if (filter === 'pro') this.classList.add('bg-blue-500');
+                if (filter === 'school') this.classList.add('bg-green-500');
+
+                // Filtrage des projets
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+{% endblock %}

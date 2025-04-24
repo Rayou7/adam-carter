@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carter ADAM – {% block title %}Home{% endblock %}</title>
+
+    {# Favicon #}
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
+    {# Font Awesome #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    {# Tailwind CSS #}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3a86ff',
+                        secondary: '#8338ec',
+                    },
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                        heading: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    {# Webpack Encore #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+{# Navigation #}
+<nav class="fixed w-full backdrop-blur-md z-50 transition-all duration-300"
+     x-data="{ mobileMenuOpen: false, scrolled: false }"
+     @scroll.window="scrolled = (window.pageYOffset > 20)"
+     :class="scrolled ? 'bg-white/90 shadow-md py-2' : 'bg-transparent py-4'">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            {# Logo #}
+            <div class="flex items-center">
+                <a href="{{ path('app_home') }}" class="text-2xl font-bold bg-gradient-to-r from-[#3a86ff] to-[#8338ec] bg-clip-text text-transparent hover:scale-105 transition-transform">
+                    Carter
+                </a>
+            </div>
+
+            {# Menu desktop #}
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="{{ path('app_home') }}" class="font-medium transition-all duration-200 relative py-2 {% if app.request.attributes.get('_route') == 'app_home' %}text-[#3a86ff]{% else %}text-gray-700 hover:text-[#3a86ff]{% endif %}">
+                    Accueil
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#3a86ff] transform transition-transform duration-300 {% if app.request.attributes.get('_route') == 'app_home' %}scale-x-100{% else %}scale-x-0{% endif %}"></span>
+                </a>
+
+                <a href="{{ path('app_projets') }}" class="font-medium transition-all duration-200 relative py-2 {% if app.request.attributes.get('_route') starts with 'app_projects_' %}text-[#3a86ff]{% else %}text-gray-700 hover:text-[#3a86ff]{% endif %}">
+                    Projets
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#3a86ff] transform transition-transform duration-300 {% if app.request.attributes.get('_route') starts with 'app_projects_' %}scale-x-100{% else %}scale-x-0{% endif %}"></span>
+                </a>
+
+                <a href="{{ path('app_veilles') }}" class="font-medium transition-all duration-200 relative py-2 {% if app.request.attributes.get('_route') == 'app_veille_tech' %}text-[#3a86ff]{% else %}text-gray-700 hover:text-[#3a86ff]{% endif %}">
+                    Veille Technologique
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#3a86ff] transform transition-transform duration-300 {% if app.request.attributes.get('_route') == 'app_veille_tech' %}scale-x-100{% else %}scale-x-0{% endif %}"></span>
+                </a>
+
+                <a href="{{ path('app_contact') }}" class="font-medium transition-all duration-200 relative py-2 {% if app.request.attributes.get('_route') == 'app_contact' %}text-[#3a86ff]{% else %}text-gray-700 hover:text-[#3a86ff]{% endif %}">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#3a86ff] transform transition-transform duration-300 {% if app.request.attributes.get('_route') == 'app_contact' %}scale-x-100{% else %}scale-x-0{% endif %}"></span>
+                </a>
+            </div>
+
+            {# Bouton mobile #}
+            <div class="md:hidden flex items-center">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 hover:text-[#3a86ff] focus:outline-none p-2 rounded-full hover:bg-gray-100 transition-colors">
+                    <i x-show="!mobileMenuOpen" class="fas fa-bars h-6 w-6"></i>
+                    <i x-show="mobileMenuOpen" class="fas fa-times h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {# Menu mobile #}
+    <div class="md:hidden absolute w-full bg-white shadow-lg transition-all duration-300 ease-in-out overflow-hidden"
+         x-show="mobileMenuOpen"
+         x-cloak
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-10"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-10">
+        <div class="pt-2 pb-4 space-y-1 px-4">
+            <a href="{{ path('app_home') }}" class="block px-3 py-2 rounded-md text-base font-medium transition-colors {% if app.request.attributes.get('_route') == 'app_home' %}bg-blue-50 text-[#3a86ff]{% else %}hover:bg-gray-50 hover:text-[#3a86ff]{% endif %}">
+                Accueil
+            </a>
+
+            <a href="{{ path('app_projets') }}" class="block px-3 py-2 rounded-md text-base font-medium transition-colors {% if app.request.attributes.get('_route') starts with 'app_projets_' %}bg-blue-50 text-[#3a86ff]{% else %}hover:bg-gray-50 hover:text-[#3a86ff]{% endif %}">
+                Projets
+            </a>
+
+            <a href="{{ path('app_veilles') }}" class="block px-3 py-2 rounded-md text-base font-medium transition-colors {% if app.request.attributes.get('_route') == 'app_veille_tech' %}bg-blue-50 text-[#3a86ff]{% else %}hover:bg-gray-50 hover:text-[#3a86ff]{% endif %}">
+                Veille Technologique
+            </a>
+
+            <a href="{{ path('app_contact') }}" class="block px-3 py-2 rounded-md text-base font-medium transition-colors {% if app.request.attributes.get('_route') == 'app_contact' %}bg-blue-50 text-[#3a86ff]{% else %}hover:bg-gray-50 hover:text-[#3a86ff]{% endif %}">
+                Contact
+            </a>
+        </div>
+    </div>
+</nav>
+
+{# Contenu principal #}
+<main class="pt-24 pb-12 md:pt-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-grow">
+    {% block body %}{% endblock %}
+</main>
+
+{# Bouton retour en haut #}
+<button
+        id="back-to-top"
+        class="fixed bottom-6 right-6 p-3 rounded-full bg-[#3a86ff] text-white shadow-lg transition-all duration-300 z-40 opacity-0 translate-y-10 pointer-events-none"
+        aria-label="Retour en haut"
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+>
+    <i class="fas fa-chevron-up h-6 w-6"></i>
+</button>
+
+{# Pied de page #}
+<footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-gray-400 py-8 relative">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#3a86ff] to-[#8338ec]"></div>
+    <div class="max-w-6xl mx-auto px-5">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            {# Copyright à gauche #}
+            <div class="text-sm order-2 md:order-1">&copy; Carter ADAM 2025</div>
+
+            {# Nom au centre #}
+            <div class="order-1 md:order-2">
+                <h3 class="text-xl font-bold bg-gradient-to-r from-[#3a86ff] to-[#8338ec] bg-clip-text text-transparent">
+                    Carter ADAM
+                </h3>
+                <p class="mt-1 text-sm text-gray-400 text-center">Étudiant en BTS SIO</p>
+            </div>
+
+            {# Réseaux sociaux à droite #}
+            <div class="flex justify-center space-x-4 order-3 md:order-3">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carter.adam.0701@gmail.com" target="_blank" class="text-gray-400 hover:text-white transition-all hover:-translate-y-1 p-2 rounded-full hover:bg-gray-700/30" aria-label="Email">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/carter-adam-13312b2a3/" class="text-gray-400 hover:text-blue-400 transition-all hover:-translate-y-1 p-2 rounded-full hover:bg-gray-700/30" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+{# Alpine.js pour les interactions #}
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<script>
+    // Script pour le bouton retour en haut
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopButton.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTopButton.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTopButton.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+    });
+</script>
+</body>
+</html>
